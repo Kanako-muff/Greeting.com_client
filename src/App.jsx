@@ -7,7 +7,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from '@mui/material';
 import { blue } from "@mui/material/colors"
 import Pastcards from './pages/PastCards.jsx';
-import Newcard from './pages/NewCard';
+import Createcard from './pages/CreateCard';
 import HomeLayout from './components/layout/HomeLayout';
 import PastCards_loggedIn from './pages/PastCards_loggedIn';
 import HomeLayout_loggedIn from './components/layout/HomeLayout_loggedIn';
@@ -44,12 +44,12 @@ function App() {
             <Route path='register' element={<Register />} />
           </Route>
           <Route path='/home' element={<HomeLayout />}>
-            <Route path='new-card' element={<Newcard />}/>
+            <Route path='create-card' element={<Createcard />}/>
             <Route path='final-card-design' element={<FinalCardDesign />}/>
             <Route path='past-cards' element={<Pastcards />}/>
           </Route>
           <Route path='/my-home' element={<HomeLayout_loggedIn />}>
-            <Route path='new-card' element={<Newcard />}/>
+            <Route path='create-card' element={<Createcard />}/>
             <Route path='my-past-cards' element={<PastCards_loggedIn />}/>
           </Route>
         </Routes>

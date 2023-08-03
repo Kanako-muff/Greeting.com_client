@@ -92,7 +92,7 @@ export default function Register() {
       });
       localStorage.setItem("token", res.token);
       console.log("Registration succeeded!");
-      navigate("/my-home/new-card");
+      navigate("/my-home/create-card");
     } catch (err) {
       const errors = err.data.errors;
       console.log(errors);

@@ -40,7 +40,7 @@ const AuthLayout = () => {
       //認証チェック
       const isAuth = await authUtils.isAuthenticated();
       if(isAuth){
-        navigate("/my-home/new-card");
+        navigate("/my-home/create-card");
       }
     };
     checkAuth();
@@ -53,7 +53,7 @@ const AuthLayout = () => {
           <img style={{height: "3rem"}} src={logoSvg} alt="Logo" />
         </Link>
         <Box className={classes.authHeader} style={{height: "auto", backgroundColor: "#C8D0DA"}}>
-          <Link to="/home/new-card" className={`${classes.authText} ${classes.authTextHover}`}>
+          <Link to="/home/create-card" className={`${classes.authText} ${classes.authTextHover}`}>
             {"Create cards without logging in"}
             <span style={{marginLeft: "4px"}}>💌</span>
           </Link>

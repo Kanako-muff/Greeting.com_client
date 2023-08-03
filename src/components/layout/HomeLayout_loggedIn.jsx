@@ -81,7 +81,7 @@ const AuthLayout = () => {
         </Box>
 
         <Box className={classes.authHeader} style={{justifyContent: "center", height: "auto", backgroundColor: "#C8D0DA"}}>
-          <Link to="/my-home/new-card" className={`${classes.authText} ${classes.menuButton}`}>
+          <Link to="/my-home/create-card" className={`${classes.authText} ${classes.menuButton}`}>
             {"New Card"}
           </Link>
           <Link to="/my-home/my-past-cards" className={`${classes.authText} ${classes.menuButton}`}>
