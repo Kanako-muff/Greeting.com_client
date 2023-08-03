@@ -1,6 +1,6 @@
 import { Box, Container } from '@mui/material';
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, Navigate, useNavigate } from 'react-router-dom';
 import { makeStyles } from "@material-ui/core/styles";
 import logoSvg from "../../../public/images/logo.svg";
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -59,6 +59,12 @@ const useStyles = makeStyles(theme => ({
 
 const AuthLayout = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
 
   return (
     <div>
@@ -68,17 +74,17 @@ const AuthLayout = () => {
             <img style={{height: "3rem"}} src={logoSvg} alt="Logo" />
           </Link>
           <Box>
-            <Link to="/register" className={`${classes.authText} ${classes.authButton}`} style={{display: "flex", alignItems: "center", marginLeft: "0px"}}>
+            <Box onClick={logout} className={`${classes.authText} ${classes.authButton}`} style={{display: "flex", alignItems: "center", marginLeft: "0px"}}>
               <LogoutIcon />
-            </Link>
+            </Box>
           </Box>
         </Box>
 
         <Box className={classes.authHeader} style={{justifyContent: "center", height: "auto", backgroundColor: "#C8D0DA"}}>
-          <Link to="/home/new-card" className={`${classes.authText} ${classes.menuButton}`}>
+          <Link to="/my-home/new-card" className={`${classes.authText} ${classes.menuButton}`}>
             {"New Card"}
           </Link>
-          <Link to="/home/past-cards" className={`${classes.authText} ${classes.menuButton}`}>
+          <Link to="/my-home/my-past-cards" className={`${classes.authText} ${classes.menuButton}`}>
             {"Past Card"}
           </Link>
         </Box>
