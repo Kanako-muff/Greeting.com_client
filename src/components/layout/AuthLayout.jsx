@@ -2,8 +2,10 @@ import { Box, Container } from '@mui/material';
 import React, { useEffect } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { makeStyles } from "@material-ui/core/styles";
-import logoSvg from "../../../public/images/logo.svg"
-import authUtils from "../../utils/authUtils"
+import logoSvg from "../../../public/images/logo.svg";
+import authUtils from "../../utils/authUtils";
+import { useDispatch } from "react-redux";
+import { setUser } from '../../redux/features/userSlice';
 
 const useStyles = makeStyles(theme => ({
   authHeader: {
@@ -33,6 +35,7 @@ const useStyles = makeStyles(theme => ({
 const AuthLayout = () => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     //JWTを持っているのか確認する。

@@ -1,0 +1,50 @@
+*{
+    /* COLOR */
+    --black: #333;
+    --white: #fff;
+    --primary: #D3DDE4;
+    --secondary: #C8D0DA;
+    --secondary-darker: #B9C3D0;
+    --tertiary: #4F5358;
+    --tertiary-darker: #404448;
+
+    /* FONT */
+    font-family: 'Noto Serif', serif !important;
+    text-decoration-line: none;
+    text-decoration-color: none;
+}
+
+
+#TextField-title{
+    height: 5rem;
+
+}
+
+.Typography-title{
+    text-align: center;
+    margin-bottom: 2rem !important;
+    font-size: 3rem !important;
+}
+
+.button-large{
+    margin-bottom: 150px;
+    margin-top: 2rem;
+    width: 55%;
+    border-radius: 50px;
+    height: 5rem;
+    font-size: 1.8rem !important;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    color: var(--tertiary);
+    background-color: var(--white);
+    cursor: pointer;
+    border: 0.3rem solid var(--tertiary);
+    transition: all 0.3s ease;
+}
+.button-large:hover{
+    /* opacity: 0.8; */
+    color: var(--white);
+    background-color: var(--tertiary);
+    border: none;
+}

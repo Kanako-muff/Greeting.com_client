@@ -1,9 +1,14 @@
 import { Box, Container } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, Outlet, Navigate, useNavigate } from 'react-router-dom';
 import { makeStyles } from "@material-ui/core/styles";
 import logoSvg from "../../../public/images/logo.svg";
 import LogoutIcon from '@mui/icons-material/Logout';
+import authUtils from "../../utils/authUtils";
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/features/userSlice';
+import { useSelector } from 'react-redux';
+
 
 const useStyles = makeStyles(theme => ({
   authHeader: {
@@ -57,9 +62,26 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const AuthLayout = () => {
+const HomeLayoutLoggedIn = () => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
+
+  useEffect(() => {
+    //JWTを持っているのか確認する。
+    const checkAuth = async() => {
+      //認証チェック
+      const user = await authUtils.isAuthenticated();
+      if(!user){
+        navigate("/my-home/create-card");
+      }else{
+        //ユーザーを保存する
+        dispatch(setUser(user));
+      }
+    };
+    checkAuth();
+  }, [navigate]);
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -75,6 +97,7 @@ const AuthLayout = () => {
           </Link>
           <Box>
             <Box onClick={logout} className={`${classes.authText} ${classes.authButton}`} style={{display: "flex", alignItems: "center", marginLeft: "0px"}}>
+              {user.username}&nbsp;&nbsp;
               <LogoutIcon />
             </Box>
           </Box>
@@ -99,4 +122,4 @@ const AuthLayout = () => {
   );
 };
 
-export default AuthLayout;
+export default HomeLayoutLoggedIn;
